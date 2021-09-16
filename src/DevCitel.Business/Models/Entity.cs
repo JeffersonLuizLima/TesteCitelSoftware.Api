@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DevCitel.Business.Models
 {
-    public class Categoria : Entity
+    public abstract class Entity
     {
-        public string Descricao { get; set; }
+        public int Id { get; set; }
     }
 }

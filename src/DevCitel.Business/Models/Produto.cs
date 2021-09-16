@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DevCitel.Business.Models
 {
-    public class Produto
+    public class Produto : Entity
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public decimal Valor { get; set; }

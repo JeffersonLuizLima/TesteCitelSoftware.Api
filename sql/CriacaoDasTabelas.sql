@@ -6,8 +6,6 @@
 
 START TRANSACTION;
 
-ALTER DATABASE CHARACTER SET utf8mb4;
-
 CREATE TABLE `Categorias` (
     `Id` int NOT NULL AUTO_INCREMENT,
     `Descricao` varchar(80) CHARACTER SET utf8mb4 NOT NULL,
