@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DevCitel.Business\DevCitel.Business.csproj" />
     <ProjectReference Include="..\DevCitel.Data\DevCitel.Data.csproj" />
   </ItemGroup>
 
