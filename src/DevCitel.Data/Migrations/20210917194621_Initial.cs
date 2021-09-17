@@ -33,7 +33,7 @@ namespace DevCitel.Data.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(200)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Descricao = table.Column<string>(type: "varchar(1000)", nullable: false)
+                    Descricao = table.Column<string>(type: "varchar(1000)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Valor = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
                     CategoriaId = table.Column<int>(type: "int", nullable: true)

@@ -7,7 +7,7 @@ namespace DevCitel.Business.Intefaces
     public interface IProdutoRepository : IRepository<Produto>
     {
         Task<IEnumerable<Produto>> ObterProdutosPorCategoria(int categoriaId);
-        Task<IEnumerable<Produto>> ObterProdutosCategirias();
+        Task<IEnumerable<Produto>> ObterProdutosCategorias();
         Task<Produto> ObterProdutoCategoria(int id);
     }
 }

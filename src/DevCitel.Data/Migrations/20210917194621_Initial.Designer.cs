@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevCitel.Data.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    [Migration("20210916043350_Initial")]
+    [Migration("20210917194621_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,6 @@ namespace DevCitel.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("varchar(1000)");
 
                     b.Property<string>("Nome")

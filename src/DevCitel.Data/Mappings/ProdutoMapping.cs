@@ -15,7 +15,6 @@ namespace DevCitel.Data.Mappings
                 .HasColumnType("varchar(200)");
 
             builder.Property(p => p.Descricao)
-                .IsRequired()
                 .HasColumnType("varchar(1000)");
 
             builder.Property(p => p.Valor)

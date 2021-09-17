@@ -15,7 +15,7 @@ CREATE TABLE `Categorias` (
 CREATE TABLE `Produtos` (
     `Id` int NOT NULL AUTO_INCREMENT,
     `Nome` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
-    `Descricao` varchar(1000) CHARACTER SET utf8mb4 NOT NULL,
+    `Descricao` varchar(1000) CHARACTER SET utf8mb4 NULL,
     `Valor` decimal(10,2) NOT NULL,
     `CategoriaId` int NULL,
     CONSTRAINT `PK_Produtos` PRIMARY KEY (`Id`),
@@ -25,7 +25,7 @@ CREATE TABLE `Produtos` (
 CREATE INDEX `IX_Produtos_CategoriaId` ON `Produtos` (`CategoriaId`);
 
 INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
-VALUES ('20210916043350_Initial', '5.0.10');
+VALUES ('20210917194621_Initial', '5.0.10');
 
 COMMIT;
 

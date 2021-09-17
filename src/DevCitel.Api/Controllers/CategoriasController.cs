@@ -34,11 +34,11 @@ namespace DevCitel.Api.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<CategoriaViewModel>> ObterPorId(int id)
         {
-            var fornecedor = await ObterCategoriaId(id);
+            var categoria = await ObterCategoriaId(id);
 
-            if (fornecedor == null) return NotFound();
+            if (categoria == null) return NotFound();
 
-            return fornecedor;
+            return categoria;
         }
         [HttpPost]
         public async Task<ActionResult<CategoriaViewModel>> Adicionar(CategoriaViewModel categoriaViewModel)

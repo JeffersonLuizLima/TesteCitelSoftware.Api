@@ -42,7 +42,6 @@ namespace DevCitel.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("varchar(1000)");
 
                     b.Property<string>("Nome")

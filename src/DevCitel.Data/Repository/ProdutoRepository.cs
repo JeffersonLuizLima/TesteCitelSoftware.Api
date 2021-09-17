@@ -18,7 +18,7 @@ namespace DevCitel.Data.Repository
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Produto>> ObterProdutosCategirias()
+        public async Task<IEnumerable<Produto>> ObterProdutosCategorias()
         {
             return await Db.Produtos.AsNoTracking().Include(c => c.Categoria)
                 .OrderBy(p => p.Nome).ToListAsync();

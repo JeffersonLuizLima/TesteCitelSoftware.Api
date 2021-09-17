@@ -22,4 +22,8 @@
     <ProjectReference Include="..\DevCitel.Business\DevCitel.Business.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
