@@ -66,6 +66,18 @@ namespace DevCitel.Api.Controllers
             return CustomResponse(categoriaViewModel);
         }
 
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<CategoriaViewModel>> Excluir(int id)
+        {
+            var categoria = await ObterCategoriaId(id);
+
+            if (categoria == null) return NotFound();
+
+            await _categoriaService.Remover(id);
+
+            return CustomResponse(categoria);
+        }
+
         private async Task<CategoriaViewModel> ObterCategoriaId(int id)
         {
             return _mapper.Map<CategoriaViewModel>(await _categoriaRepository.ObterPorId(id));

@@ -40,7 +40,8 @@ namespace DevCitel.Data.Repository
 
         public virtual async Task<TEntity> ObterPorId(int id)
         {
-            return await DbSet.FindAsync(id);
+            return await DbSet.AsNoTracking()
+                    .FirstAsync(c => c.Id == id);
         }
 
         public virtual async Task<List<TEntity>> ObterTodos()
