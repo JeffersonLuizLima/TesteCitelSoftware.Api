@@ -28,18 +28,11 @@ namespace DevCitel.Api
             services.AddDbContext<MeuDbContext>(options =>
                 options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
+            services.AddIdentityConfig(Configuration);
+
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddControllers();
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevCitel.Api", Version = "v1" });
-            });
-
-            //services.AddScoped<MeuDbContext>();
-            //services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            //services.AddScoped<CategoriaRepository>();
+            services.AddApiConfig();
 
             services.ResolveDependencies();
         }
@@ -54,16 +47,7 @@ namespace DevCitel.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DevCitel.Api v1"));
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseApiConfig(env);
         }
     }
 }
