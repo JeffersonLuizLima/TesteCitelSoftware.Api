@@ -1,6 +1,7 @@
 ﻿using DevCitel.Business.Intefaces;
 using DevCitel.Business.Models;
 using DevCitel.Business.Models.Validations;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DevCitel.Business.Services
@@ -19,12 +20,24 @@ namespace DevCitel.Business.Services
         {
             if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
 
+            if (_produtoRepository.Buscar(p => p.Nome == produto.Nome).Result.Any())
+            {
+                Notificar("Já existe um produto com este nome informado.");
+                return;
+            }
+
             await _produtoRepository.Adicionar(produto);
         }
 
         public async Task Atualizar(Produto produto)
         {
             if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
+
+            if (_produtoRepository.Buscar(p => p.Nome == produto.Nome && p.Id != produto.Id).Result.Any())
+            {
+                Notificar("Já existe um produto com este nome informado.");
+                return;
+            }
 
             await _produtoRepository.Atualizar(produto);
         }
