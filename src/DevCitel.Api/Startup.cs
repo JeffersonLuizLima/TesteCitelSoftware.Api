@@ -1,3 +1,4 @@
+using DevCitel.Api.Configuration;
 using DevCitel.Business.Intefaces;
 using DevCitel.Data.Context;
 using DevCitel.Data.Repository;
@@ -27,15 +28,20 @@ namespace DevCitel.Api
             services.AddDbContext<MeuDbContext>(options =>
                 options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevCitel.Api", Version = "v1" });
             });
 
-            services.AddScoped<MeuDbContext>();
-            services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            services.AddScoped<CategoriaRepository>();
+            //services.AddScoped<MeuDbContext>();
+            //services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            //services.AddScoped<CategoriaRepository>();
+
+            services.ResolveDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
