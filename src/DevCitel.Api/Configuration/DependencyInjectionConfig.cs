@@ -4,6 +4,8 @@ using DevCitel.Business.Services;
 using DevCitel.Data.Context;
 using DevCitel.Data.Repository;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace DevCitel.Api.Configuration
 {
@@ -18,6 +20,8 @@ namespace DevCitel.Api.Configuration
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<ICategoriaService, CategoriaService>();
+
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
             return services;
         }

@@ -25,11 +25,6 @@ namespace DevCitel.Api.Configuration
                 options.SubstituteApiVersionInUrl = true;
             });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevCitel.Api", Version = "v1" });
-            });
-
             services.AddCors(options =>
             {
                 options.AddPolicy("Development",
