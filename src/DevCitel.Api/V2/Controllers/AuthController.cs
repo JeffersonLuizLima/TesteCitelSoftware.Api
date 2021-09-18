@@ -11,9 +11,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevCitel.Api.V1.Controllers
+namespace DevCitel.Api.V2.Controllers
 {
-    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}")]
     public class AuthController : MainController
     {

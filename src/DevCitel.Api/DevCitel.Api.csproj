@@ -29,8 +29,4 @@
     <ProjectReference Include="..\DevCitel.Data\DevCitel.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="V2\" />
-  </ItemGroup>
-
 </Project>
