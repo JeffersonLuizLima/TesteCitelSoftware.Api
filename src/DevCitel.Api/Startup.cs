@@ -1,14 +1,11 @@
 using DevCitel.Api.Configuration;
-using DevCitel.Business.Intefaces;
 using DevCitel.Data.Context;
-using DevCitel.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace DevCitel.Api
 {
@@ -42,6 +39,7 @@ namespace DevCitel.Api
         {
             if (env.IsDevelopment())
             {
+                app.UseCors("Development");
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DevCitel.Api v1"));

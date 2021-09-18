@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DevCitel.Api.Controllers;
 using DevCitel.Api.ViewModels;
 using DevCitel.Business.Intefaces;
 using DevCitel.Business.Models;
@@ -7,10 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DevCitel.Api.Controllers
+namespace DevCitel.Api.V1.Controllers
 {
     [Authorize]
-    [Route("api/produtos")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/produtos")]
     public class ProdutosController : MainController
     {
         private readonly IProdutoRepository _produtoRepository;

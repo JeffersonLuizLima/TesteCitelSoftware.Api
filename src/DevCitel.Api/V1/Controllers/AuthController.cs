@@ -1,4 +1,5 @@
-﻿using DevCitel.Api.Extensions;
+﻿using DevCitel.Api.Controllers;
+using DevCitel.Api.Extensions;
 using DevCitel.Api.ViewModels;
 using DevCitel.Business.Intefaces;
 using Microsoft.AspNetCore.Identity;
@@ -10,9 +11,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevCitel.Api.Controllers
+namespace DevCitel.Api.V1.Controllers
 {
-    [Route("api")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
