@@ -2,12 +2,14 @@
 using DevCitel.Api.ViewModels;
 using DevCitel.Business.Intefaces;
 using DevCitel.Business.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DevCitel.Api.Controllers
 {
+    [Authorize]
     [Route("api/produtos")]
     public class ProdutosController : MainController
     {

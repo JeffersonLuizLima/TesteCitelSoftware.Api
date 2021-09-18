@@ -45,7 +45,7 @@ namespace DevCitel.Api.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return CustomResponse(GerarJwt());
+                return CustomResponse(await GerarJwt(user.Email));
             }
             foreach (var error in result.Errors)
             {
@@ -64,7 +64,7 @@ namespace DevCitel.Api.Controllers
 
             if (result.Succeeded)
             {
-                return CustomResponse(GerarJwt());
+                return CustomResponse(await GerarJwt(loginUser.Email));
             }
             if (result.IsLockedOut)
             {
@@ -76,8 +76,9 @@ namespace DevCitel.Api.Controllers
             return CustomResponse(loginUser);
         }
 
-        private string GerarJwt()
+        private async Task<LoginResponseViewModel> GerarJwt(string email)
         {
+            var user = await _userManager.FindByEmailAsync(email);
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
@@ -90,7 +91,18 @@ namespace DevCitel.Api.Controllers
 
             var encodedToken = tokenHandler.WriteToken(token);
 
-            return encodedToken;
+            var response = new LoginResponseViewModel
+            {
+                AccessToken = encodedToken,
+                ExpiresIn = TimeSpan.FromHours(_appSettings.ExpiracaoHoras).TotalSeconds,
+                UserToken = new UserTokenViewModel
+                {
+                    Id = user.Id,
+                    Email = user.Email
+                }
+            };
+
+            return response;
         }
     }
 }
