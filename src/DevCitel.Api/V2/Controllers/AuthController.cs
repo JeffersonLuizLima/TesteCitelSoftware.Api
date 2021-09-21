@@ -47,7 +47,7 @@ namespace DevCitel.Api.V2.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return CustomResponse(await GerarJwt(user.Email));
+                return Ok(await GerarJwt(user.Email));
             }
             foreach (var error in result.Errors)
             {
@@ -66,7 +66,7 @@ namespace DevCitel.Api.V2.Controllers
 
             if (result.Succeeded)
             {
-                return CustomResponse(await GerarJwt(loginUser.Email));
+                return Ok(await GerarJwt(loginUser.Email));
             }
             if (result.IsLockedOut)
             {
