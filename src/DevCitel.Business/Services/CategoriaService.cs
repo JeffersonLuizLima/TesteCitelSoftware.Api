@@ -9,11 +9,14 @@ namespace DevCitel.Business.Services
     public class CategoriaService : BaseService, ICategoriaService
     {
         private readonly ICategoriaRepository _categoriaRepository;
+        private readonly IProdutoRepository _produtoRepository;
 
         public CategoriaService(ICategoriaRepository categoriaRepository,
+                                IProdutoRepository produtoRepository,
                                 INotificador notificador) : base(notificador)
         {
             _categoriaRepository = categoriaRepository;
+            _produtoRepository = produtoRepository;
         }
 
         public async Task Adicionar(Categoria categoria)
@@ -44,6 +47,12 @@ namespace DevCitel.Business.Services
 
         public async Task Remover(int id)
         {
+            if (_produtoRepository.ObterProdutosPorCategoria(id).Result.Any())
+            {
+                 Notificar("A Categoria possui produtos cadastrados!");
+                return;
+            }
+
             await _categoriaRepository.Remover(id);
         }
 
